@@ -1,8 +1,4 @@
-//create function
-  //control and return statements
+// var promptThing = prompt('Hello')
 
-//Prompt user for input and store variable
-
-//Call function
-
-//Alert user results
+var bar = ([][[]]+[])[+[]]
+// promptThing ? alert('Hello world!') : alert('a different message')

@@ -1,19 +1,32 @@
 function openBlock (id) {
-    var block = document.getElementById(id);
-    var blocks = document.getElementById("main_content").getElementsByTagName("div");
+  var block = document.getElementById(id.split('menu_item_')[1]);
+  var blocks = document.getElementById("main_content").getElementsByTagName("div");
+  var link = document.getElementById(id).parentElement
+  var activeLink = document.getElementsByClassName('active')[0]
 
-    for (var y = 0; y < blocks.length; y++) {
-        blocks[y].style.display = "none";
-    }
-    block.style.display = "block";
-    
-    // TODO: remove the "active" class from all of the li elements inside the menu
-    // TODO: add the "active" class to the li element that contains the link that was clicked
+  for (var y = 0; y < blocks.length; y++) {
+    blocks[y].style.display = "none";
+  }
+  block.style.display = "block";
 
+  activeLink.classList.remove('active')
+  link.classList.add('active')
 }
 
-// TODO: add the "hover" class to the menu items when you hover over them
+function $openBlock(id) {
+  var block = $('#' + id.split('menu_item_')[1])
+  var blocks = $('#main_content > div')
+  var link = $('#' + id).parent()
+  var activeLink = $('.active')
 
+  blocks.hide()
+  block.show()
+  activeLink.toggleClass('active')
+  link.toggleClass('active')
+}
 
-// TODO: set up the tooltip plugin on all of the links in the menu
-
+$('#menu > li > a')
+  .on('mouseover', function() { $(this).toggleClass('hover') })
+  .on('mouseleave', function() { $(this).toggleClass('hover') })
+  .on('click', function() { $openBlock($(this).attr('id')) })
+  .tooltip({ delay: 1000 })
